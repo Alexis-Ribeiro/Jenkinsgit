@@ -19,6 +19,19 @@ pipeline {
                 echo "Unit tests."
                 echo "Integration tests."
                 echo "pytest was the tool used for this"
+                
+            }
+            post {
+                always {
+                    // send email notification
+                    emailext (
+                        to: 'amorenodeolivei@deakin.edu.au',
+                        subject: 'Test Status: ${currentBuild.result}',
+                        body: '''<p>The test stage has completed.</p>
+                                 <p>Status: ${currentBuild.result}</p>''',
+                        attachLog: true
+                    )
+                }
             }
         }
         stage("Code Analysis") {
@@ -30,6 +43,18 @@ pipeline {
         stage("Security Scan") {
             steps{
                 echo "Perform a security scan on the code using OWASP ZAP."
+            }
+            post {
+                always {
+                    // send email notification
+                    emailext (
+                        to: 'amorenodeolivei@deakin.edu.au',
+                        subject: 'Security Scan Status: ${currentBuild.result}',
+                        body: '''<p>The security scan stage has completed.</p>
+                                 <p>Status: ${currentBuild.result}</p>''',
+                        attachLog: true
+                    )
+                }
             }
         }
         stage("Deploy") {
