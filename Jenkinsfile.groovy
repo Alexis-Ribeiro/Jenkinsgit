@@ -8,36 +8,45 @@ pipeline {
     stages {
         stage("Build") {
             steps{
-                echo "Fetch the source code from the directory path: $DIRECTORY_PATH"
+                echo "Fetch the source code from the directory path: $DIRECTORY_PATH"                
                 echo "Compile the code and generate any necessary artifacts."
+                echo "Code built using a build automation tool called Maven."
             }
                             
         }
-        stage("Test") {
+        stage("Unit and Integration Tests") {
             steps{
                 echo "Unit tests."
                 echo "Integration tests."
+                echo "pytest was the tool used for this"
             }
         }
-        stage("Code Quality Check") {
+        stage("Code Analysis") {
             steps{
                 echo "Check the quality of the code"
+                echo "SonarQube was the tool used for this"
+            }
+        }
+        stage("Security Scan") {
+            steps{
+                echo "Perform a security scan on the code using OWASP ZAP."
             }
         }
         stage("Deploy") {
             steps{
-                echo "Deploy the application to a $TESTING_ENVIRONMENT"
+                echo "Deploy the application to a staging server (e.g., AWS EC2 instance) using Jenkins."
             }
         }
-        stage("Approval") {
+        stage("Integration Tests on Staging") {
             steps{
-                echo "This is the Approval stage"
+                echo "run integration tests on the staging environment to ensure the application functions as expected in a production-like environment"
                 sleep 10
             }
         }
         stage("Deploy to Production") {
             steps{
                 echo "The product $PRODUCTION_ENVIRONMENT is ready for production"
+                echo "deploy the application to a production server (e.g., AWS EC2 instance) using Jenkins."
             }
         }
     }
