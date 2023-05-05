@@ -18,16 +18,15 @@ pipeline {
             steps{
                 echo "Unit tests."
                 echo "Integration tests."
-                echo "pytest was the tool used for this"
-                
-            }
+                echo "pytest was the tool used for this"                
+            }            
             post {
                 always {
                         email to:"alexis.ribeirog@hotmail.com",
                         subject:"Test Status: ${currentBuild.result}",
-                        body:"The test stage has completed. Status: ${currentBuild.result}",                          
+                        body:"The test stage has completed. Status: ${currentBuild.result}",
+                            }
             }
-        }
         stage("Code Analysis") {
             steps{
                 echo "Check the quality of the code"
@@ -42,9 +41,9 @@ pipeline {
                 always {
                         email to:"alexis.ribeirog@hotmail.com",
                         subject:"Security Scan Status: ${currentBuild.result}",
-                        body:"The security scan stage has completed. Status: ${currentBuild.result}",                           
+                        body:"The security scan stage has completed. Status: ${currentBuild.result}",
+                            }
             }
-        }
         stage("Deploy") {
             steps{
                 echo "Deploy the application to a staging server (e.g., AWS EC2 instance) using Jenkins."
