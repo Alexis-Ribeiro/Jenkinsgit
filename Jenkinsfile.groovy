@@ -22,7 +22,7 @@ pipeline {
             }            
             post {
                 always {
-                        email to:"alexis.ribeirog@hotmail.com",
+                        mail to:"alexis.ribeirog@hotmail.com",
                         subject:"Test Status: ${currentBuild.result}",
                         body:"The test stage has completed. Status: ${currentBuild.result}",
                 }
@@ -39,7 +39,7 @@ pipeline {
             }
             post {
                 always {
-                        email to:"alexis.ribeirog@hotmail.com",
+                        mail to:"alexis.ribeirog@hotmail.com",
                         subject:"Security Scan Status: ${currentBuild.result}",
                         body:"The security scan stage has completed. Status: ${currentBuild.result}",
                 }
