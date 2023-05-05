@@ -11,22 +11,22 @@ pipeline {
                 echo "Fetch the source code from the directory path: $DIRECTORY_PATH"                
                 echo "Compile the code and generate any necessary artifacts."
                 echo "Code built using a build automation tool called Maven."
-            }
-                            
+            }                      
         }
         stage("Unit and Integration Tests") {
             steps{
                 echo "Unit tests."
                 echo "Integration tests."
                 echo "pytest was the tool used for this"                
-            }            
+            }
             post {
                 always {
-                        mail to:"amorenodeolivei@deakin.edu.au",
-                        subject:"Test Status: ${currentBuild.result}",
-                        body:"The test stage has completed. Status: ${currentBuild.result}",
+                    mail to:"amorenodeolivei@deakin.edu.au",
+                    subject:"Test Status: ${currentBuild.result}",
+                    body:"The test stage has completed. Status: ${currentBuild.result}"
                 }
             }
+        }
         stage("Code Analysis") {
             steps{
                 echo "Check the quality of the code"
@@ -39,11 +39,12 @@ pipeline {
             }
             post {
                 always {
-                        mail to:"amorenodeolivei@deakin.edu.au",
-                        subject:"Security Scan Status: ${currentBuild.result}",
-                        body:"The security scan stage has completed. Status: ${currentBuild.result}",
+                    mail to:"amorenodeolivei@deakin.edu.au",
+                    subject:"Security Scan Status: ${currentBuild.result}",
+                    body:"The security scan stage has completed. Status: ${currentBuild.result}"
                 }
             }
+        }
         stage("Deploy") {
             steps{
                 echo "Deploy the application to a staging server (e.g., AWS EC2 instance) using Jenkins."
@@ -59,6 +60,13 @@ pipeline {
             steps{
                 echo "The product $PRODUCTION_ENVIRONMENT is ready for production"
                 echo "deploy the application to a production server (e.g., AWS EC2 instance) using Jenkins."
+            }
+            post {
+                always {
+                    mail to:"amorenodeolivei@deakin.edu.au",
+                    subject:"Production Deployment Status: ${currentBuild.result}",
+                    body:"The deployment to production stage has completed. Status: ${currentBuild.result}"
+                }
             }
         }
     }
