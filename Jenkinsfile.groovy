@@ -25,7 +25,7 @@ pipeline {
                 always {
                     // send email notification
                     emailext (
-                        to: 'amorenodeolivei@deakin.edu.au',
+                        to: 'alexis.ribeirog@hotmail.com',
                         subject: 'Test Status: ${currentBuild.result}',
                         body: '''<p>The test stage has completed.</p>
                                  <p>Status: ${currentBuild.result}</p>''',
@@ -48,7 +48,7 @@ pipeline {
                 always {
                     // send email notification
                     emailext (
-                        to: 'amorenodeolivei@deakin.edu.au',
+                        to: 'alexis.ribeirog@hotmail.com',
                         subject: 'Security Scan Status: ${currentBuild.result}',
                         body: '''<p>The security scan stage has completed.</p>
                                  <p>Status: ${currentBuild.result}</p>''',
