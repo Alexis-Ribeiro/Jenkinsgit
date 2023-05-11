@@ -25,7 +25,7 @@ pipeline {
                         mail to: "amorenodeolivei@deakin.edu.au",
                         subject: "Test Status: ${currentBuild.result}",
                         body: "The test stage has completed. Status: ${currentBuild.result}"
-                        emailext attachLog : true
+                        emailext attachLog true
                     }
                 }
             }
@@ -46,7 +46,7 @@ pipeline {
                         mail to: "amorenodeolivei@deakin.edu.au",
                         subject: "Security Scan Status: ${currentBuild.result}",
                         body: "The security scan stage has completed. Status: ${currentBuild.result}"
-                        emailext attachLog : true
+                        emailext attachLog true
                     }
                 }
             }
@@ -73,7 +73,7 @@ pipeline {
                         mail to: "amorenodeolivei@deakin.edu.au",
                         subject: "Production Deployment Status: ${currentBuild.result}",
                         body: "The deployment to production stage has completed. Status: ${currentBuild.result}"
-                        emailext attachLog : true
+                        emailext attachLog true
                     }
                 }
             }
