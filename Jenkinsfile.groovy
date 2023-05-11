@@ -57,11 +57,6 @@ pipeline {
                 echo "The product $PRODUCTION_ENVIRONMENT is ready for production"
                 echo "Deploy the application to a production server (e.g., AWS EC2 instance) using Jenkins."
             }
-            post {
-                always {
-                    emailext attachLog: true, subject: "Production Deployment Status: ${currentBuild.result}", body: "The deployment to production stage has completed. Status: ${currentBuild.result}", to: "amorenodeolivei@deakin.edu.au"
-                }
-            }
         }
     }
 }
