@@ -21,7 +21,11 @@ pipeline {
             }
             post {
                 always {
-                    emailext attachLog: true, subject: "Test Status: ${currentBuild.result}", body: "The test stage has completed. Status: ${currentBuild.result}", to: "amorenodeolivei@deakin.edu.au"
+                    script {
+                        emailext subject: "Test Status: ${currentBuild.result}",
+                                  body: "The test stage has completed. Status: ${currentBuild.result}",
+                                  attachLog: true
+                    }
                 }
             }
         }
@@ -37,7 +41,11 @@ pipeline {
             }
             post {
                 always {
-                    emailext attachLog: true, subject: "Security Scan Status: ${currentBuild.result}", body: "The security scan stage has completed. Status: ${currentBuild.result}", to: "amorenodeolivei@deakin.edu.au"
+                    script {
+                        emailext subject: "Security Scan Status: ${currentBuild.result}",
+                                  body: "The security scan stage has completed. Status: ${currentBuild.result}",
+                                  attachLog: true
+                    }
                 }
             }
         }
@@ -59,7 +67,11 @@ pipeline {
             }
             post {
                 always {
-                    emailext attachLog: true, subject: "Production Deployment Status: ${currentBuild.result}", body: "The deployment to production stage has completed. Status: ${currentBuild.result}", to: "amorenodeolivei@deakin.edu.au"
+                    script {
+                        emailext subject: "Production Deployment Status: ${currentBuild.result}",
+                                  body: "The deployment to production stage has completed. Status: ${currentBuild.result}",
+                                  attachLog: true
+                    }
                 }
             }
         }
