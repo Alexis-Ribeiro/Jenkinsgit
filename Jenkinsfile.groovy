@@ -73,7 +73,7 @@ pipeline {
                         mail to: "amorenodeolivei@deakin.edu.au",
                         subject: "Production Deployment Status: ${currentBuild.result}",
                         body: "The deployment to production stage has completed. Status: ${currentBuild.result}"
-                        email attachLog : true
+                        emailext attachLog : true
                     }
                 }
             }
