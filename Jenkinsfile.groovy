@@ -23,10 +23,9 @@ pipeline {
             }
             post {
                 always {
-                        mail to:"alexis.ribeirog@hotmail.com",
+                        mail to:"alexis.ribeirog@hotmail.com" attachLog: true,
                         subject:"Test Status: ${currentBuild.result}",
                         body:"The test stage has completed. Status: ${currentBuild.result}",
-                        attachLog: true
                 }
             }
         }
@@ -42,10 +41,9 @@ pipeline {
             }
             post {
                 always {
-                        mail to:"alexis.ribeirog@hotmail.com",
+                        mail to:"alexis.ribeirog@hotmail.com" attachLog: true,
                         subject:"Security Scan Status: ${currentBuild.result}",
-                        body:"The security scan stage has completed. Status: ${currentBuild.result}",
-                        attachLog: true
+                        body:"The security scan stage has completed. Status: ${currentBuild.result}",                    
                 }
             }
         }
